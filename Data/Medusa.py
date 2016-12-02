@@ -333,8 +333,6 @@ data = \
 	Zeus	0.84%
 	48.10%
 	185,326
-
-Last Updated a few seconds from now
 """
 data = data.strip().split()
 hero_name = []
