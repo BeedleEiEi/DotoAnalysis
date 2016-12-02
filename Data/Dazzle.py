@@ -351,6 +351,7 @@ for run_data in data:
         name = ""
 count = 0
 for i in range(len(hero_name)):
-    statistic.append([hero_name[i], value[count], value[count+1], value[count+2]])
+    statistic.append([hero_name[i], str(value[count][:-1]), str(value[count+1][:-1]), value[count+2]])
+    count += 3
 
 print(statistic)
