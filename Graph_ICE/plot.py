@@ -10,12 +10,15 @@ def collect_data(number):
     col, row = 0, 0
     hero_advantage = []
     hero_name = []
+    hero_winrate = []
+    hero_match = []
     #number = 1 is abaddon 112 is Zeus
     for i in range(1,113): #Data abaddon start with 1,0 1-13 character
         hero_advantage.append(my_data_advantage.cell(number,i).value)
-    for i in range(1,113):
         hero_name.append(my_data_advantage.cell(i,0).value)
-    return hero_advantage, hero_name
+        hero_winrate.append(my_data_winrate.cell(number,i).value)
+        hero_match.append(my_data_matchs.cell(number,i).value)
+    return hero_advantage, hero_name, hero_winrate, hero_match
 
 def plot():
     """Plot Graph by pylab"""
@@ -37,16 +40,29 @@ def plot_plotly():
     """Show Graph 112 Heroes not sort"""
     import plotly.offline as offline
     from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
-    from plotly.graph_objs import Bar
+    from plotly.graph_objs import Bar, Scatter
     hero_advantage = []
     hero_name = []
-    for i in range(1, 113):
-        hero_advantage, hero_name = collect_data(i)
-        trace = Bar(
+    hero_winrate = []
+    hero_match = []
+    for i in range(1, 3):
+        hero_advantage, hero_name, hero_winrate, hero_match = collect_data(i)
+        Advantage = Bar(
             x=hero_advantage,
-            y=hero_name
+            y=hero_name,
+            name = 'Advantage'
             )
-        data = [trace]
+        WinRate = Bar(
+            x=hero_winrate,
+            y=hero_name,
+            name = 'WinRate'
+            )
+        MatchPlay = Bar(
+            x=hero_match,
+            y=hero_name,
+            name = 'MatchPlay'
+            )
+        data = [Advantage, WinRate, MatchPlay]
         offline.plot({'data':data, 'layout':{'title': hero_name[i-1]+" - Advantage is good for range > 0 Disadvantage otherwise", 'font': dict(size=16)}}, filename=str(hero_name[i-1])+".html", image='png')
 
 plot_plotly()
