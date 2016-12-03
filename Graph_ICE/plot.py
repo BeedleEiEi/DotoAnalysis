@@ -39,12 +39,13 @@ def plot_plotly():
     import plotly.graph_objs as go
     hero_advantage = []
     hero_name = []
-    hero_advantage, hero_name = collect_data(1)
-    trace1 = go.Bar(
-        x=hero_advantage,
-        y=hero_name
-        )
-    data = [trace1]
-    py.iplot(data, filename='DotoAbaddon')
+    for i in range(1, 3):
+        hero_advantage, hero_name = collect_data(i)
+        trace = go.Bar(
+            x=hero_advantage,
+            y=hero_name
+            )
+        data = [trace]
+        py.iplot(data, filename=hero_name[i-1])
 
 plot_plotly()
