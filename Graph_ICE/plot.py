@@ -47,6 +47,6 @@ def plot_plotly():
             y=hero_name
             )
         data = [trace]
-        offline.plot(data, filename=hero_name[i-1], image='png')
+        offline.plot({'data':data, 'layout':{'title': hero_name[i-1]+" - Advantage is good for range > 0 Disadvantage otherwise", 'font': dict(size=16)}}, filename=str(hero_name[i-1])+".html", image='png')
 
 plot_plotly()
