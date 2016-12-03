@@ -43,9 +43,7 @@ def plot_plotly():
     trace1 = go.Bar(
         x=hero_advantage,
         y=hero_name
-##        fill='tonexty'
-    )
-
+        )
     data = [trace1]
     py.iplot(data, filename='DotoAbaddon')
 
