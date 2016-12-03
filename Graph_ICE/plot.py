@@ -18,7 +18,7 @@ def collect_data(number):
     return hero_advantage, hero_name
 
 def plot():
-    """Plot Graph"""
+    """Plot Graph by pylab"""
     import pylab as plt
     hero = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,\
             21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,\
@@ -30,6 +30,23 @@ def plot():
     LABELS, names = collect_data(1)
     plt.bar(hero, LABELS, align='center')
     plt.xticks(range(112), names) # (x width, names)
+    plt.gca().set_xlim(0.1, 30)
     plt.show()
 
-plot()
+def plot_plotly():
+    """"""
+    import plotly.plotly as py
+    import plotly.graph_objs as go
+    hero_advantage = []
+    hero_name = []
+    hero_advantage, hero_name = collect_data(1)
+    trace1 = go.Bar(
+        x=hero_advantage,
+        y=hero_name
+##        fill='tonexty'
+    )
+
+    data = [trace1]
+    py.iplot(data, filename='DotoAbaddon')
+
+plot_plotly()
