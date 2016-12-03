@@ -37,7 +37,7 @@ def plot():
     plt.show()
 
 def plot_plotly():
-    """Show Graph 112 Heroes not sort"""
+    """Show Graph 112 Heroes sort by Heroes Name"""
     import plotly.offline as offline
     from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
     from plotly.graph_objs import Bar, Scatter
@@ -45,7 +45,7 @@ def plot_plotly():
     hero_name = []
     hero_winrate = []
     hero_match = []
-    for i in range(1, 3):
+    for i in range(1, 113):
         hero_advantage, hero_name, hero_winrate, hero_match = collect_data(i)
         Advantage = Bar(
             x=hero_advantage,
