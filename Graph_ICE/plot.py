@@ -34,18 +34,19 @@ def plot():
     plt.show()
 
 def plot_plotly():
-    """"""
-    import plotly.plotly as py
-    import plotly.graph_objs as go
+    """Show Graph 112 Heroes not sort"""
+    import plotly.offline as offline
+    from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
+    from plotly.graph_objs import Bar
     hero_advantage = []
     hero_name = []
-    for i in range(1, 3):
+    for i in range(1, 113):
         hero_advantage, hero_name = collect_data(i)
-        trace = go.Bar(
+        trace = Bar(
             x=hero_advantage,
             y=hero_name
             )
         data = [trace]
-        py.iplot(data, filename=hero_name[i-1])
+        offline.plot(data, filename=hero_name[i-1], image='png')
 
 plot_plotly()
