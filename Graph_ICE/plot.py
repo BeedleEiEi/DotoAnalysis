@@ -45,24 +45,13 @@ def plot_plotly():
     hero_name = []
     hero_winrate = []
     hero_match = []
-    for i in range(1, 113):
+    for i in range(1, 2):
         hero_advantage, hero_name, hero_winrate, hero_match = collect_data(i)
         Advantage = Bar(
-            x=hero_advantage,
-            y=hero_name,
-            name = 'Advantage'
-            )
-        WinRate = Bar(
-            x=hero_winrate,
-            y=hero_name,
-            name = 'WinRate'
-            )
-        MatchPlay = Bar(
-            x=hero_match,
-            y=hero_name,
-            name = 'MatchPlay'
-            )
-        data = [Advantage, WinRate, MatchPlay]
+            {"x":hero_name,
+            "y":hero_advantage,"type":"bar","name":'Advantage'
+            })
+        data = [Advantage]
         offline.plot({'data':data, 'layout':{'title': hero_name[i-1]+" - Advantage is good for range > 0 Disadvantage otherwise", 'font': dict(size=16)}}, filename=str(hero_name[i-1])+".html", image='png')
 
 plot_plotly()
