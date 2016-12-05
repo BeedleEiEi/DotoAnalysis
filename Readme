@@ -1,0 +1,10 @@
+This Project made by Python3
+Subject : DotoAnalysis
+Module : xlrd, plotly
+Files: extract_data.py it's help us to collect datas from others files into one excel file
+       : plot.py it's main function is draw graphs within Graph_Finalize folder which export to .html format
+To see our graph just download Graph_Finalize folder and see them, Enjoy
+
+
+Data base on Website:
+http://www.dotabuff.com/
